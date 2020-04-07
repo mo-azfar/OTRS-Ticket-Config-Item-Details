@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<otrs_config version="2.0" init="Application">
+    <Setting Name="TicketCIDetails::CIValuesByClass" Required="0" Valid="1">
+        <Description Translatable="1">Defines the CI values that need to be pull into dynamic field. Each entry must be prefixed with the class name and double colons (i.e. Computer::). There are a few CI-Attributes that common to all CIs (example for the class Computer: Computer::Name, Computer::CurDeplState, Computer::CreateTime). To show individual CI-Attributes as defined in the CI-Definition, the following scheme must be used (example for the class Computer): Computer::HardDisk::1, Computer::HardDisk::2. Only 1st , 2nd and 3rd level definition supported at the moment. READ INFO OR README FILE</Description>
+        <Navigation>TicketCIDetails</Navigation>
+        <Value>
+            <Array>
+                <Item>Computer::WarrantyPeriod::1</Item>
+                <Item>Software::Name</Item>
+                <Item>Software::CurInciState</Item>
+                <Item>Software::Vendor::1</Item>
+                <Item>Software::LicenceKey::1</Item>
+                <Item>Software::LicenceKey::1::Quantity::1</Item>
+                <Item>Software::LicenceKey::1::ExpirationDate::1</Item>
+                <Item>Software::LicenceKey::2</Item>
+                <Item>Software::LicenceKey::2::Quantity::1</Item>
+                <Item>Software::LicenceKey::2::ExpirationDate::1</Item>
+            </Array>
+        </Value>
+    </Setting>
+</otrs_config>
