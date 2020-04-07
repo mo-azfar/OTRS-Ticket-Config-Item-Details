@@ -10,13 +10,13 @@ https://opar.perl-services.de/dist/DynamicFieldITSMConfigItem-6.0.1
 
 Example:
 
-a)	Name: Anything #example: ContractCI
-	  Field Type: ITSMConfigItemReference #must use this type
+a)	Name: Anything #example: ContractCI  
+	  Field Type: ITSMConfigItemReference #must use this type  
 	  MaxArraySize: 1 #must be 1
 	
 	
-b)	Name:  Anything  #example: ContractCIDetails
-	  Field Type: Textarea
+b)	Name:  Anything  #example: ContractCIDetails  
+	  Field Type: Textarea  
 
 
 2. Defines the CI values that need to be pull into dynamic field at System Configuration > TicketCIDetails::CIValuesByClass.  
