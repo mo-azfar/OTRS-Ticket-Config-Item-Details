@@ -42,9 +42,11 @@ Param 1 Key => SourceDF
 Param 1 Value => ContractCI #Name of the source dynamic field ITSMConfigItemReference 
 
 Param 2 Key => DestinationDF  
-Param 2 Value => ContractDetails  #Name of the target dynamic field    	
+Param 2 Value => ContractCIDetails  #Name of the target dynamic field    	
+
 
 
 [![Capture.png](https://i.postimg.cc/k4XQXg9c/Capture.png)](https://postimg.cc/cK2gFZvg)
+
 
 [![Capture2.png](https://i.postimg.cc/zvLbQLSy/Capture2.png)](https://postimg.cc/JHLzDzF8)
