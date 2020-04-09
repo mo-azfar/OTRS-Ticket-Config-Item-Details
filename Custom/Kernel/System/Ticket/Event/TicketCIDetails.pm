@@ -73,47 +73,61 @@ sub Run {
 				ConfigItemID => $ConfigItemID,
 				XMLDataGet   => 1,
 		);
-	
-		my $Data;
+				
+		my $XMLData = $LastVersion->{XMLData}->[1]->{Version}->[1];
+		my $Data1;
+		#search in xml definition to get the CI Name based on CI Key (passed from configuration)
+		#up to 3rd level definition
 		foreach my $ImportedCIValue (@ImportedCIValues)
-		{
-			my($Class, $Definition) = split(/::/, $ImportedCIValue, 2);
-			next if $Class ne $LastVersion->{Class};
-			
-			if ($Definition =~ m/::/) 
-			{
-				my @spl = split('::', $Definition);
-				my $DataName;
-				my $DataValue;
-				if (scalar @spl eq '2')
-				{
-					$DataName = $spl[0];
-					$DataValue = $LastVersion->{XMLData}->[1]->{Version}->[1]->{$spl[0]}->[$spl[1]]->{Content} || 0;
-				}
-				elsif (scalar @spl eq '4')
-				{
-					$DataName = " ** $spl[2]";
-					$DataValue = $LastVersion->{XMLData}->[1]->{Version}->[1]->{$spl[0]}->[$spl[1]]->{$spl[2]}->[$spl[3]]->{Content} || 0;
-				}
-				
-				elsif (scalar @spl eq '6')
-				{
-					$DataName = " **** $spl[4]";
-					$DataValue = $LastVersion->{XMLData}->[1]->{Version}->[1]->{$spl[0]}->[$spl[1]]->{$spl[2]}->[$spl[3]]->{$spl[4]}->[$spl[5]]->{Content} || 0;
-				}
-				
-				$Data .= "$DataName : ";
-				$Data .= $DataValue;
-				$Data .= "\n";
-			}
-			else
-			{
-				$Data .= "$Definition : $LastVersion->{$Definition}\n";
-			}
-			
-		}
+		{ 
+		  my($Class, $Definition) = split(/::/, $ImportedCIValue, 2);
+		  next if $Class ne $LastVersion->{Class};
+		  
+		  if ($Definition =~ m/::/) 
+		  { 
+		    my @array = split('::', $Definition); #split definition by :: into array for searching in xml data
+		    my @new_array = grep {$_ ne '1' && $_ ne '2' && $_ ne '3'} @array; #remove number from array for searching in xml definition
+		    
+		    if (scalar @new_array eq '1') #defintion 1st level
+		    { 
+		      no warnings qw(uninitialized);
+		      my ($hash_ref) = grep {$_->{Key} eq "$new_array[0]" } @{$LastVersion->{XMLDefinition}};
+		              
+		      #get xml value
+		      #print $XMLData->{$hash_ref->{Key}}->[$array[1]]->{Content};
+		      #print $XMLData->{InstallDate}->[1]->{Content};
+		      $Data1 .= "[$hash_ref->{Name}]: $XMLData->{$hash_ref->{Key}}->[$array[1]]->{Content}\n";
+		          
+		    }
+		    elsif (scalar @new_array eq '2') #defintion 2nd level
+		    {
+		      no warnings qw(uninitialized);
+		      my ($hash_ref) = grep { $_->{Sub}->[0]->{Key} eq "$new_array[1]" } @{$LastVersion->{XMLDefinition}};
+		      
+		      #get xml value
+		      #print $XMLData->{$hash_ref->{Key}}->[$array[1]]->{$array[2]}->[$array[3]]->{Content};
+		      #print  $XMLData->{InstallDate}->[1]->{By}->[1]->{Content};
+		      $Data1 .= "*$hash_ref->{Sub}->[0]->{Name}: $XMLData->{$hash_ref->{Key}}->[$array[1]]->{$array[2]}->[$array[3]]->{Content}\n";
+		        
+		    }
+		    elsif (scalar @new_array eq '3') #defintion 3rd level
+		    {
+		      no warnings qw(uninitialized);
+		      my ($hash_ref) = grep { $_->{Sub}->[0]->{Sub}->[0]->{Key} eq "$new_array[2]" } @{$LastVersion->{XMLDefinition}};
+		      
+		      #get xml value
+		      #print $XMLData->{$hash_ref->{Key}}->[$array[1]]->{$array[2]}->[$array[3]]->{$array[4]}->[$array[5]]->{Content};
+		      #print $XMLData->{InstallDate}->[1]->{By}->[1]->{Backup}->[1]->{Content};
+		      $Data1 .= "**$hash_ref->{Sub}->[0]->{Sub}->[0]->{Name}: $XMLData->{$hash_ref->{Key}}->[$array[1]]->{$array[2]}->[$array[3]]->{$array[4]}->[$array[5]]->{Content}\n";
+		      
+		    }
+		  } 
+		  else
+		  {
+		    $Data1 .= "[$Definition] : $LastVersion->{$Definition}\n";
+		  }
 		
-		#TODO: To support further level of ci definition.
+		}
 	
 		##REF  http://doc.otrs.com/doc/api/otrs/6.0/Perl/Kernel/System/DynamicFieldValue.pm.html#ValueSet (OTRS 6)
 		my $DynamicFieldValueObject = $Kernel::OM->Get('Kernel::System::DynamicFieldValue');
@@ -130,7 +144,7 @@ sub Run {
 			ObjectID => $TicketID,              								
 			Value    => [
 				{
-					ValueText => $Data,
+					ValueText => $Data1,
 				},
 				
 			],
@@ -139,7 +153,6 @@ sub Run {
 	
 	
 	} 
-	
 		
 }
 
