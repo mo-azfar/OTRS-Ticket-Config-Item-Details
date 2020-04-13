@@ -37,7 +37,7 @@ Example:
 
 Execute Custom Module => Module => Kernel::System::Ticket::Event::TicketCIDetails
 	
-[MANDATORY PARAM]
+[MANDATORY PARAM]  
 Param 1 Key => SourceDF  
 Param 1 Value => ContractCI #Name of the source dynamic field ITSMConfigItemReference 
 
