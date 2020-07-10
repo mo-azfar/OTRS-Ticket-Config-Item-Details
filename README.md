@@ -10,12 +10,12 @@ https://opar.perl-services.de/dist/DynamicFieldITSMConfigItem-6.0.1
 
 Example:
 
-		a)	Name: Anything 							#example: ContractCI  
+		a)	Name: Anything 	#example: ContractCI  
 	  		Field Type: ITSMConfigItemReference 	#must use this type  
-	  		MaxArraySize: 1 						#must be 1
+	  		MaxArraySize: 1 	#must be 1
 	
 	
-		b)	Name:  Anything  						#example: ContractCIDetails  
+		b)	Name:  Anything  #example: ContractCIDetails  
 	  		Field Type: Textarea  
 
 
