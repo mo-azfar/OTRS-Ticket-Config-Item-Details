@@ -10,13 +10,13 @@ https://opar.perl-services.de/dist/DynamicFieldITSMConfigItem-6.0.1
 
 Example:
 
-a)	Name: Anything #example: ContractCI  
-	  Field Type: ITSMConfigItemReference #must use this type  
-	  MaxArraySize: 1 #must be 1
+		a)	Name: Anything #example: ContractCI  
+	  		Field Type: ITSMConfigItemReference #must use this type  
+	  		MaxArraySize: 1 #must be 1
 	
 	
-b)	Name:  Anything  #example: ContractCIDetails  
-	  Field Type: Textarea  
+		b)	Name:  Anything  #example: ContractCIDetails  
+	  		Field Type: Textarea  
 
 
 
@@ -33,13 +33,13 @@ Example:
 
 
 
-3. Admin must create a new Generic Agent (GA) with option to execute custom module.
+3. Admin must create a new Generic Agent (GA) with option to execute custom module.  
 
-Execute Custom Module => Module => Kernel::System::Ticket::Event::TicketCIDetails
+Execute Custom Module => Module => Kernel::System::Ticket::Event::TicketCIDetails  
 	
 [MANDATORY PARAM]  
 Param 1 Key => SourceDF  
-Param 1 Value => ContractCI #Name of the source dynamic field ITSMConfigItemReference 
+Param 1 Value => ContractCI #Name of the source dynamic field ITSMConfigItemReference  
 
 Param 2 Key => DestinationDF  
 Param 2 Value => ContractCIDetails  #Name of the target dynamic field    	
