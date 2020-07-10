@@ -45,8 +45,8 @@ Example:
 		Param 2 Value => ContractCIDetails  #Name of the target dynamic field    	
 
 
-Selecting Software 1
-[![Capture.png](https://i.postimg.cc/k4XQXg9c/Capture.png)](https://postimg.cc/cK2gFZvg)
-
-Software 1 Details
-[![Capture2.png](https://i.postimg.cc/zvLbQLSy/Capture2.png)](https://postimg.cc/JHLzDzF8)
+Selecting Software 1  
+[![Capture.png](https://i.postimg.cc/k4XQXg9c/Capture.png)](https://postimg.cc/cK2gFZvg)  
+  
+Software 1 Details  
+[![Capture2.png](https://i.postimg.cc/zvLbQLSy/Capture2.png)](https://postimg.cc/JHLzDzF8)  
