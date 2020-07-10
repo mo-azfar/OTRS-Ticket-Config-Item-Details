@@ -23,13 +23,12 @@ Example:
 2. Defines the CI values that need to be pull into dynamic field at System Configuration > TicketCIDetails::CIValuesByClass.  
 - Each entry must be prefixed with the class name and double colons.  
 - Supported up to 3 level definition.  
+- Example:
 
-Example:
-
-1st level -> Software::Name  
-1st level -> Software::LicenceKey::1  
-2nd level -> Software::LicenceKey::1::Quantity::1  
-3rd level -> Software::LicenceKey::1::Quantity::1::Major::1
+		1st level -> Software::Name  
+		1st level -> Software::LicenceKey::1  
+		2nd level -> Software::LicenceKey::1::Quantity::1  
+		3rd level -> Software::LicenceKey::1::Quantity::1::Major::1
 
 
 
