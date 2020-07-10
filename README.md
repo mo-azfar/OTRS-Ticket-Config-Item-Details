@@ -33,20 +33,20 @@ Example:
 
 
 
-3. Admin must create a new Generic Agent (GA) with option to execute custom module.  
+3. Admin must create a new Generic Agent (GA) with option to run on specific ticket event and to execute custom module.  
 
-Execute Custom Module => Module => Kernel::System::Ticket::Event::TicketCIDetails  
+		Execute Custom Module => Module => Kernel::System::Ticket::Event::TicketCIDetails  
 	
-[MANDATORY PARAM]  
-Param 1 Key => SourceDF  
-Param 1 Value => ContractCI #Name of the source dynamic field ITSMConfigItemReference  
+		[MANDATORY PARAM]  
+		Param 1 Key => SourceDF  
+		Param 1 Value => ContractCI #Name of the source dynamic field ITSMConfigItemReference  
 
-Param 2 Key => DestinationDF  
-Param 2 Value => ContractCIDetails  #Name of the target dynamic field    	
+		Param 2 Key => DestinationDF  
+		Param 2 Value => ContractCIDetails  #Name of the target dynamic field    	
 
 
-
+Selecting Software 1
 [![Capture.png](https://i.postimg.cc/k4XQXg9c/Capture.png)](https://postimg.cc/cK2gFZvg)
 
-
+Software 1 Details
 [![Capture2.png](https://i.postimg.cc/zvLbQLSy/Capture2.png)](https://postimg.cc/JHLzDzF8)
